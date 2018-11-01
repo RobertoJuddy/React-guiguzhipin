@@ -25,6 +25,15 @@ class Login extends Component {
       //发送ajax请求
       const data = await reqLogin({username, password});
       console.log(data);
+      if(data.data.code ===0){
+        alert('ok')
+      }else if(data.data.code ===1){
+        alert('用户名或者密码错误')
+      }else if(data.data.code === 2){
+        alert('用户不合法')
+      }else if(data.data.code === 3){
+        alert('网络不稳定，请刷新')
+      }
     } else {
       //提示两次密码输入不一致
       alert('两次密码输入不一致');
@@ -50,7 +59,7 @@ class Login extends Component {
               <WhiteSpace />
               <InputItem  placeholder="请输入密码" onChange={val=>this.handleChange('password',val)} type="password">密码</InputItem>
               <WhiteSpace />
-              <InputItem  placeholder="请输入确认密码" type="password">确认密码</InputItem>
+              <InputItem  placeholder="请输入确认密码" type="password" onChange={val=>this.handleChange('rePassword',val)}>确认密码</InputItem>
               <WhiteSpace />
               <Button type="primary" onClick={this.toMain}>登录</Button>
               <WhiteSpace />

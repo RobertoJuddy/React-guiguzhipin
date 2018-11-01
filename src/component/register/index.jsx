@@ -28,12 +28,20 @@ class Register extends Component {
       //发送ajax请求
       const data = await reqRegister({username, password, type});
       console.log(data);
+
+      if(data.data.code === 0){
+        this.props.history.replace('/login');
+      }else if(data.data.code ===1){
+        alert('用户名已存在，请重新注册')
+      }else if(data.data.code === 2){
+        alert('输入不合法')
+      }else if(data.data.code ===3){
+        alert('网络不稳定，请刷新')
+      }
     } else {
       //提示两次密码输入不一致
       alert('两次密码输入不一致');
     }
-
-    this.props.history.replace('/login');
   };
 
   toLogin=() => {
