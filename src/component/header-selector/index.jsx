@@ -4,33 +4,32 @@ import {Grid, List} from 'antd-mobile'
 
 class HeaderSelertor extends Component {
 
-  state ={
-
-  icon:''
+  state = {
+    icon: ''
   };
 
-  headerChange =({icon,text})=>{
+  headerChange = ({icon, text}) => {
 
-
-
-  this.setState({
-    icon
-  })
-
+    this.setState({
+      icon,
+    })
+    this.props.setHeader(text)
   };
+
+
+
 
   render() {
-
-
+    const {icon} = this.state;
     const data = Array.from(new Array(20)).map((item, index) => ({
       icon: require(`./avatars/头像${index + 1}.png`),
-      text: `头像${index+1}`,
+      text: `头像${index + 1}`,
     }));
 
-    const src = icon
+    const headerSrc = icon ? <div>请选择头像<img src={icon}/></div> : '请选择头像';
 
     return (
-      <List renderHeader={() => '请选择头像'}>
+      <List renderHeader={() => headerSrc}>
         <Grid data={data} columnNum={5} onClick={this.headerChange}/>
       </List>
 

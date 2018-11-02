@@ -7,6 +7,8 @@ import {Provider} from 'react-redux';
 import {HashRouter , Route ,Switch} from 'react-router-dom';
 import store from './redux/store';
 
+import './assets/less/index.less';
+
 ReactDOM.render(
   (
     <Provider store={store}>
