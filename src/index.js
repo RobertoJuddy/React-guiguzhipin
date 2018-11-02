@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Login from './component/login'
 import Main from './component/main'
-import Register from './component/register'
+import Register from './containers/register'
 import {Provider} from 'react-redux';
 import {HashRouter , Route ,Switch} from 'react-router-dom';
 import store from './redux/store';
